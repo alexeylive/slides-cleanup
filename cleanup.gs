@@ -146,6 +146,11 @@ function isCompletelyOutside(element, pageWidth, pageHeight) {
   const width = element.getWidth();
   const height = element.getHeight();
   
+  // Если координаты не определены (placeholder'ы, некоторые группы) — не удаляем
+  if (left === null || top === null || width === null || height === null) {
+    return false;
+  }
+  
   // Вычисляем границы bounding box элемента
   const elementRight = left + width;
   const elementBottom = top + height;
